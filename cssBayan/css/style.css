@@ -15,34 +15,18 @@ hr {
 }
 
 .wrapper {
-  max-width: 90vw;
+  max-width: 65%;
   margin: 2vh auto;
 }
 
 .title {
   margin-bottom: 3vh;
-  font-size: 24px;
+  font-size: 3rem;
   font-weight: 700;
 }
 
-.accordion-item {
-  position: relative;
-  cursor: pointer;
-}
-
 .accordion-input {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 5vh;
-  opacity: 0;
-}
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: 1s;
-  margin: 1vh;
+  display: none;
 }
 
 .accordion-button {
@@ -51,29 +35,52 @@ hr {
   justify-content: space-between;
   align-items: center;
   margin-bottom: -0.01vh;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 700;
-  cursor: pointer;
-  transition: 1s;
 }
 
 .accordion-button h2 {
   width: 80%;
-  font-size: 20px;
+  font-size: 1.3rem;
 }
 
-.accordion-button div {
-  width: 6vw;
-  height: 6vh;
+.accordion-item:active {
+  filter: contrast(50%);
+}
+
+.accordion-item:active .accordion-button > h2 {
+  color: #941919;
+}
+
+.accordion-button .plus-icon {
+  width: 2rem;
+  height: 2rem;
   opacity: 1;
   background-image: url("../img/plus_icon.svg");
+  background-size: 2rem 2rem;
   background-size: contain;
   background-repeat: no-repeat;
   transition: 0.3s;
 }
 
-.accordion-input:checked ~ .accordion-content {
-  max-height: 200vh;
+.label-img {
+  width: 100%;
+  text-align: center;
+}
+
+.accordion-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.accordion-img {
+  width: 0%;
+  transition: 0.3s;
+}
+
+.accordion-input:checked ~ .label-img .accordion-content .accordion-img {
+  width: 50%;
+  padding: 0.6rem;
   transition: 1s;
 }
 
@@ -85,59 +92,31 @@ hr {
   transform: rotate(45deg);
 }
 
-.accordion-img {
-  display: block;
-  width: 80%;
-  margin: 0 auto;
-}
+@media (hover: hover) {
+  .accordion-button:hover,
+  .accordion-img:hover {
+    cursor: pointer;
+  }
 
-
-@media (min-width: 720px) {
-  .title {
-    font-size: 36px;
-  }
-  .wrapper {
-    max-width: 80vw;
-    margin: 2vh auto;
-  }
-  .accordion-img {
-    width: 70%;
-  }
-  .accordion-button {
-    font-size: 20px;
-  }
-  .accordion-button .plus-icon {
-    width: 3vw;
-    height: 4vh;
-    opacity: 1;
-  }
-}
-
-@media (min-width: 825px) {
   .accordion-button {
     color: #7a1c61;
-  }
-
-  .accordion-button .plus-icon{
-    opacity: 0;
   }
 
   .accordion-container:hover .accordion-button {
     color: #000000;
   }
 
-  .accordion-container:hover .accordion-button .plus-icon {
+  .accordion-button .plus-icon {
+    opacity: 0;
+  }
+
+  .accordion-container:hover .plus-icon {
     opacity: 1;
   }
 
-  .accordion-input:hover ~ .accordion-content {
-    max-height: 80vh;
-    transition: 3s;
-  }
-
-  .accordion-item:hover > .accordion-content {
-    max-height: 80vh;
-    transition: 3s;
+  .accordion-item:hover .label-img .accordion-content .accordion-img {
+    width: 50%;
+    transition: 0.5s;
   }
 
   .accordion-item:hover > .accordion-button .plus-icon {
@@ -146,26 +125,54 @@ hr {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 480px) {
   .title {
-    font-size: 40px;
+    font-size: 1.8rem;
   }
   .wrapper {
-    max-width: 50vw;
-    margin: 3vh auto;
+    max-width: 80vw;
+    margin: 2vh auto;
   }
-  .accordion-img {
-    width: 60%;
-  }
+
   .accordion-button {
-    font-size: 24px;
+    font-size: 1rem;
   }
   .accordion-button .plus-icon {
-    width: 2vw;
-    height: 3vh;
-    opacity: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-size: 1.2rem 1.2rem;
   }
-  .accordion-button h2 {
-    width: 90%;
+}
+
+@media (min-width: 825px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .accordion-item:hover .label-img .accordion-content .accordion-img {
+    max-width: 50%;
+  }
+  .accordion-button {
+    font-size: 1.2rem;
+  }
+  .accordion-button .plus-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    background-size: 1.3rem 1.3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .accordion-button {
+    font-size: 1.5rem;
+  }
+  .accordion-button .plus-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-size: 1.6rem 1.6rem;
   }
 }
